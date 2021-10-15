@@ -46,14 +46,13 @@ class DesktopAssistant(tkinter.Tk):
 	def clock_right_click(self, event: tkinter.Event) -> None:
 		self.hide_window = not self.hide_window
 		self.clock_label.master.overrideredirect(self.hide_window)
-
 	
 
 	def clock_on_enter(self, event: tkinter.Event) -> None:
 		# Make the window transparent when not in focus
 		self.clock_label.master.wm_attributes("-alpha", 1.0)
-
-
+	
+	
 	def clock_on_leave(self, event:tkinter.Event) -> None:
 		# Make the window transparent when not in focus
 		self.clock_label.master.wm_attributes("-alpha", 0.5)
