@@ -1,7 +1,6 @@
 import tkinter
 import tkinter.ttk
 import time
-from typing import List
 
 
 class DesktopAssistant(tkinter.Tk):
@@ -52,7 +51,7 @@ class DesktopAssistant(tkinter.Tk):
 		# Make the window transparent when not in focus
 		self.clock_label.master.wm_attributes("-alpha", 1.0)
 	
-	
+
 	def clock_on_leave(self, event:tkinter.Event) -> None:
 		# Make the window transparent when not in focus
 		self.clock_label.master.wm_attributes("-alpha", 0.5)
