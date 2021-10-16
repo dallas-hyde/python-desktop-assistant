@@ -17,11 +17,15 @@ import pyowm.weatherapi25.weather_manager
 import json
 
 
+# Cross Platform
+import sys
+
+
 class ClockWidget(tkinter.Frame):
 	def __init__(self, parent: tkinter.Tk, settings: dict) -> None:
 		super().__init__(parent)
-
-		self.configure(background="grey")
+		
+		self.configure(background=parent["bg"])
 
 		# Save the settings and declare the clock variables
 		self.settings: dict = settings
@@ -29,7 +33,7 @@ class ClockWidget(tkinter.Frame):
 		self.time_suffix: str = ""
 
 		# Create the label
-		self.label: tkinter.Label = tkinter.Label(self, font=("digital numbers", 36), background="grey", foreground="white")
+		self.label: tkinter.Label = tkinter.Label(self, font=("digital numbers", 36), background=parent["bg"], foreground="white")
 		self.label.pack(anchor="center")
 
 
@@ -62,7 +66,7 @@ class WeatherWidget(tkinter.Frame):
 	def __init__(self, parent: tkinter.Tk, settings: dict) -> None:
 		super().__init__(parent)
 
-		self.configure(background="grey")
+		self.configure(background=parent["bg"])
 
 		# Save the settings and declare weather variables
 		self.settings = settings
@@ -72,9 +76,9 @@ class WeatherWidget(tkinter.Frame):
 		self.weather: pyowm.weatherapi25.weather.Weather
 
 		# Create the labels
-		self.weather_label: tkinter.Label = tkinter.Label(self, font=("digital numbers", 36), background="grey", foreground="white")
+		self.weather_label: tkinter.Label = tkinter.Label(self, font=("digital numbers", 36), background=parent["bg"], foreground="white")
 		self.weather_label.pack(anchor="center")
-		self.temperate_label: tkinter.Label = tkinter.Label(self, font=("digital numbers", 36), background="grey", foreground="white")
+		self.temperate_label: tkinter.Label = tkinter.Label(self, font=("digital numbers", 36), background=parent["bg"], foreground="white")
 		self.temperate_label.pack(anchor="center")
 
 
@@ -103,14 +107,23 @@ class DesktopAssistant(tkinter.Tk):
 		self.hide_window: bool = True
 		# Make the window non-closable
 		self.overrideredirect(self.hide_window)
-		# Set the background of the window to transparent
-		self.wm_attributes("-transparentcolor", "grey")
 		# Ensuer the label will be on top of windows
 		self.wm_attributes("-topmost", True)
-		# Make the window transparent
-		self.wm_attributes("-alpha", 0.5)
 		# Bring the window to the front
 		self.lift()
+
+		# Make the window transparent
+		if sys.platform == "linux" or sys.platform == "linux2":
+			self.wait_visibilityself(self)
+			self.wm_attributes("-alpha", 0.5)
+		
+		elif sys.platform == "darwin":
+			self.wm_attributes("-transparent", True)
+			self.config(bg="systemTransparent")
+		
+		elif sys.platform == "win32":
+			self.wm_attributes("-transparentcolor", "grey")
+			self.wm_attributes("-alpha", 0.5)
 
 		# Bind the window's events to functions
 		self.bind("<Button-3>", self.on_right_click)
