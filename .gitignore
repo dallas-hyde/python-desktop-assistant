@@ -113,5 +113,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-clock.json
-weather.json
+weather_key.txt
