@@ -1,0 +1,25 @@
+{
+	"apiKey": "",
+	"zipCode": "",
+	"country": "",
+	"temperatureUnits": "celcius",
+	"updateTimeInMillis": 3600000,
+	"weatherTypes":
+	{
+		"thunderstorm": "\u26c8",
+		"drizzle": "\ud83c\udf27",
+		"rain": "\ud83c\udf26",
+		"snow": "\u2744",
+		"mist": "\ud83c\udf2b",
+		"smoke": "\ud83c\udf2b",
+		"haze": "\ud83c\udf2b",
+		"dust": "\ud83c\udf2b",
+		"fog": "\ud83c\udf2b",
+		"sand": "\ud83c\udf2b",
+		"ash": "\ud83c\udf2b",
+		"squall": "\ud83c\udf2b",
+		"tornado": "\ud83c\udf2a",
+		"clear": "\u2600",
+		"clouds": "\ud83c\udf25"
+	}
+}
