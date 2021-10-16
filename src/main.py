@@ -114,7 +114,7 @@ class DesktopAssistant(tkinter.Tk):
 
 		# Make the window transparent
 		if sys.platform == "linux" or sys.platform == "linux2":
-			self.wait_visibilityself(self)
+			self.wait_visibility(self)
 			self.wm_attributes("-alpha", 0.5)
 		
 		elif sys.platform == "darwin":
